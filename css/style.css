@@ -257,7 +257,7 @@ button {
     width: 80%;
   }
   .container .allNotes .notesHeader h2 {
-    font-size: 20px;
+    font-size: 18px;
   }
   .container .allNotes .notesContainer {
     -webkit-box-orient: vertical;
@@ -274,6 +274,9 @@ button {
   header h3 {
     font-size: 16px;
     font-weight: 100;
+  }
+  header p {
+    font-size: 16px;
   }
 }
 /*# sourceMappingURL=style.css.map */
