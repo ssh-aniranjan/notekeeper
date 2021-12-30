@@ -10,7 +10,7 @@ body {
   margin: 0;
 }
 
-body > h1 {
+body header h1 {
   position: relative;
   top: 0;
   left: 0;
@@ -104,6 +104,9 @@ body hr {
   height: 36px;
   -ms-flex-preferred-size: 24%;
       flex-basis: 24%;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
   max-width: 180px;
   color: white;
   background: #226af0;
@@ -147,14 +150,17 @@ body hr {
 }
 
 .container .allNotes .notesHeader button {
-  position: absolute;
-  right: 30px;
+  display: block;
   margin: 5px;
   padding: 5px 10px;
   height: 36px;
-  max-width: 180px;
   -ms-flex-preferred-size: 20%;
       flex-basis: 20%;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  max-width: 180px;
+  float: right;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
@@ -243,11 +249,15 @@ button {
 }
 
 @media screen and (max-width: 480px) {
+  header h1 {
+    font-size: 24px;
+    font-weight: 600;
+  }
   .container .textArea {
     width: 80%;
   }
   .container .allNotes .notesHeader h2 {
-    font-size: 24px;
+    font-size: 20px;
   }
   .container .allNotes .notesContainer {
     -webkit-box-orient: vertical;
@@ -260,6 +270,10 @@ button {
     -ms-flex-item-align: center;
         -ms-grid-row-align: center;
         align-self: center;
+  }
+  header h3 {
+    font-size: 16px;
+    font-weight: 100;
   }
 }
 /*# sourceMappingURL=style.css.map */
