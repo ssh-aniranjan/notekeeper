@@ -1,0 +1,200 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  margin: auto;
+  width: 60%;
+  background: white;
+  border: 2px solid #000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.container h1 {
+  padding-bottom: 10px;
+  margin: auto;
+  width: 60%;
+  text-align: center;
+}
+
+.container .textArea {
+  margin: auto;
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.container .textArea #notebox {
+  resize: none;
+}
+
+.container .textArea .textAreaBtn {
+  margin: 10px 0px;
+  padding: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.container .textArea .textAreaBtn button {
+  margin: 5px;
+  padding: 5px 10px;
+  height: 36px;
+  -ms-flex-preferred-size: 24%;
+      flex-basis: 24%;
+  color: white;
+  background: #226af0;
+  border-radius: 6px;
+}
+
+.container .allNotes {
+  margin: 10px 0px;
+  position: relative;
+}
+
+.container .allNotes .notesHeader {
+  margin: 0px;
+  padding: 0px 6px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .allNotes .notesHeader h2 {
+  line-height: 40px;
+  -ms-flex-preferred-size: 70%;
+      flex-basis: 70%;
+  font-size: 32px;
+  direction: ltr;
+}
+
+.container .allNotes .notesHeader button {
+  margin: 5px;
+  padding: 5px 10px;
+  height: 36px;
+  max-width: 180px;
+  -ms-flex-preferred-size: 20%;
+      flex-basis: 20%;
+  color: white;
+  background: #226af0;
+}
+
+.container .allNotes .notesContainer {
+  padding: 2%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.container .allNotes .notesContainer .notes {
+  margin: 5px;
+  padding: 5px 5px;
+  padding: auto;
+  min-width: 30%;
+  max-width: 32%;
+  background: #fff8;
+  border: 2px solid aqua;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 0 4px;
+          box-shadow: 0 0 4px;
+}
+
+.container .allNotes .notesContainer .notes h3 {
+  padding: 5px;
+  font-size: 24px;
+  text-align: left;
+  direction: ltr;
+}
+
+.container .allNotes .notesContainer .notes p {
+  margin: 0px 4px;
+  margin-bottom: 16px;
+}
+
+.container .allNotes .notesContainer .notes button {
+  margin-top: 10px;
+  float: right;
+  min-width: 20%;
+  max-width: -webkit-fit-content;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+}
+
+.container .allNotes .notesFooter {
+  position: absolute;
+  left: -50px;
+  bottom: -50px;
+  width: 100%;
+  text-align: center;
+}
+
+button {
+  margin: 5px;
+  padding: 5px 10px;
+  height: 36px;
+  max-height: -webkit-max-content;
+  max-height: -moz-max-content;
+  max-height: max-content;
+  width: 180px;
+  color: white;
+  background: #226af0;
+  border-radius: 6px;
+}
+
+@media screen and (max-width: 768) {
+  .container h1 {
+    font-size: 48px;
+  }
+  .container .textArea {
+    width: 80%;
+  }
+  .container .allNotes .notesContainer .notes {
+    -ms-flex-preferred-size: 80%;
+        flex-basis: 80%;
+  }
+}
+/*# sourceMappingURL=style.css.map */
