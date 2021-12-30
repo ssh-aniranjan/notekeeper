@@ -2,27 +2,57 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
     margin: 0;
+    > h1 {
+        position: relative;
+        top: 0;
+        left: 0;
+
+        padding: 10px;
+        // margin: 10px;
+        width: 100%;
+        color: #fff;
+        text-align: center;
+        background: #000;
+        z-index: 1;
+    }
+    footer {
+        position: relative;
+        top: 0;
+        left: 0;
+
+        padding: 10px;
+        // margin: 10px;
+        width: 100%;
+        color: #fff;
+        text-align: center;
+        background: #888;
+    }
+
+    hr {
+        margin: auto;
+        width: 100%;
+        align-self: center;
+        background: #fff;
+        border: 1px solid #888;
+        box-shadow: 0 2px 4px #888;
+    }
 }
 
 .container {
     margin: auto;
-    width: 60%;
+    width: 98%;
 
     background: white;
 
-    border: 2px solid #000;
+    // border: 2px solid #000;
     display: flex;
     flex-direction: column;
-    h1 {
-        padding-bottom: 10px;
-        margin: auto;
-        width: 60%;
-        text-align: center;
-    }
+
     .textArea {
         margin: auto;
         width: 90%;
@@ -30,7 +60,17 @@ body {
         display: flex;
         flex-direction: column;
         #notebox {
+            margin-top: 10px;
+            padding: 5px 20px;
+            height: 30vh;
+            color: #444;
+            font-size: 20px;
+            border: 3px inset #ccc;
+            border-radius: 6px;
+            // box-shadow: 4px 4px 4px #d8d8d8;
             resize: none;
+            overflow: wrap;
+            scroll-behavior: smooth;
         }
         .textAreaBtn {
             margin: 10px 0px;
@@ -46,6 +86,9 @@ body {
                 // min-width: 10%;
                 // width: 180px;
                 flex-basis: 24%;
+                max-width: 180px;
+
+                // flex-basis: 20%;
                 color: white;
                 background: rgb(34, 106, 240);
 
@@ -59,20 +102,30 @@ body {
 
         position: relative;
         .notesHeader {
-            margin: 0px;
+            position: relative;
+            margin: 10px;
             padding: 0px 6px;
 
             display: flex;
             flex-direction: row;
-            justify-content: center;
             align-items: center;
             h2 {
+                padding: 10px;
+
+                padding-left: 20px;
                 line-height: 40px;
-                flex-basis: 70%;
+                flex-basis: 40%;
+                align-self: flex-start;
+                color: #fff;
                 font-size: 32px;
                 direction: ltr;
+                background: #000;
+                border-radius: 6px;
             }
             button {
+                position: absolute;
+
+                right: 30px;
                 margin: 5px;
                 padding: 5px 10px;
 
@@ -80,6 +133,7 @@ body {
                 max-width: 180px;
 
                 flex-basis: 20%;
+                align-self: center;
 
                 color: white;
                 background: rgb(34, 106, 240);
@@ -97,15 +151,13 @@ body {
             .notes {
                 margin: 5px;
                 padding: 5px 5px;
-                padding: auto;
 
-                min-width: 30%;
-                max-width: 32%;
+                width: 30%;
 
                 background: #fff8;
-                border: 2px solid aqua;
+                border: 1px solid #333;
                 border-radius: 6px;
-                box-shadow: 0 0 4px;
+                box-shadow: 0 0 3px;
                 h3 {
                     padding: 5px;
                     font-size: 24px;
@@ -117,7 +169,7 @@ body {
                     margin: 0px 4px;
                     margin-bottom: 16px;
                 }
-                button{
+                button {
                     margin-top: 10px;
                     float: right;
                     min-width: 20%;
@@ -126,14 +178,7 @@ body {
             }
         }
 
-        .notesFooter {
-            position: absolute;
-            left: -50px;
-            bottom: -50px;
-
-            width: 100%;
-            text-align: center;
-        }
+        
     }
 }
 
@@ -141,7 +186,7 @@ button {
     margin: 5px;
     padding: 5px 10px;
     height: 36px;
-    max-height:max-content;
+    max-height: max-content;
     width: 180px;
 
     color: white;
@@ -153,26 +198,48 @@ button {
 //media queries
 
 @media screen and (max-width: 768) {
-.container{
-    h1{
+    h1 {
         font-size: 48px;
     }
-    .textArea{
-        width: 80%;
-    }
 
-    .allNotes{
-        .notesContainer{
-            .notes{
-                flex-basis: 80%;
-            }
+    .container {
+        .textArea {
+            width: 80%;
         }
 
+        .allNotes {
+            .notesContainer {
+                flex-direction: column;
+                .notes {
+                    flex-basis: 40%;
+                }
+            }
+        }
     }
+    
 }
-}
 
+@media screen and (max-width: 480px) {
+    .container {
+        .textArea {
+            width: 80%;
+        }
 
-@media screen and (max-width: 480px){
+        .allNotes {
+            .notesHeader{
+                h2{
+                    font-size: 24px;
 
+                }
+            }
+            .notesContainer {
+                flex-direction: column;
+
+                .notes {
+                    width: 92%;
+                    align-self: center;
+                }
+            }
+        }
+    }
 }
