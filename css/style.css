@@ -114,7 +114,8 @@ body hr {
 }
 
 .container .allNotes {
-  margin: 10px 0px;
+  margin: 10px auto;
+  width: 92%;
   position: relative;
 }
 
@@ -129,6 +130,9 @@ body hr {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -137,11 +141,8 @@ body hr {
 .container .allNotes .notesHeader h2 {
   padding: 10px;
   padding-left: 20px;
-  line-height: 40px;
   -ms-flex-preferred-size: 40%;
       flex-basis: 40%;
-  -ms-flex-item-align: start;
-      align-self: flex-start;
   color: #fff;
   font-size: 32px;
   direction: ltr;
@@ -255,6 +256,10 @@ button {
   }
   .container .textArea {
     width: 80%;
+  }
+  .container .textArea #notebox {
+    height: 20vh;
+    width: 90%;
   }
   .container .allNotes .notesHeader h2 {
     font-size: 18px;

@@ -104,8 +104,8 @@ body {
     }
 
     .allNotes {
-        margin: 10px 0px;
-
+        margin: 10px auto;
+        width: 92%;
         position: relative;
         .notesHeader {
             position: relative;
@@ -114,14 +114,13 @@ body {
 
             display: flex;
             flex-direction: row;
+            justify-content: space-between;
             align-items: center;
             h2 {
                 padding: 10px;
 
                 padding-left: 20px;
-                line-height: 40px;
                 flex-basis: 40%;
-                align-self: flex-start;
                 color: #fff;
                 font-size: 32px;
                 direction: ltr;
@@ -232,6 +231,10 @@ button {
     .container {
         .textArea {
             width: 80%;
+            #notebox{
+                height: 20vh;
+                width: 90%;
+            }
         }
 
         .allNotes {
