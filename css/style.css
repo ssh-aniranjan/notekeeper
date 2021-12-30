@@ -259,7 +259,10 @@ button {
   }
   .container .textArea #notebox {
     height: 20vh;
-    width: 96%;
+    width: 100%;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
   }
   .container .allNotes .notesHeader h2 {
     font-size: 18px;
