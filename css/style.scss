@@ -14,12 +14,10 @@ body {
         background: #000;
         h1 {
             padding: 10px;
-            flex-basis: 80%;
             // margin: 10px;
             text-align: center;
         }
         p {
-            flex-basis: 20%;
             line-height: 40px;
             align-self: center;
         }
@@ -225,17 +223,15 @@ button {
 
 @media screen and (max-width: 480px) {
     header {
-        justify-content: space-evenly;
+        justify-content: space-between;
         h1 {
             font-size: 24px;
             font-weight: 600;
         }
-        p {
-            // display: flex;
-            // flex-direction: column;
-            // justify-content: center;
-            align-self: center;
+        p{
+            width: fit-content;
         }
+        
     }
 
     .container {

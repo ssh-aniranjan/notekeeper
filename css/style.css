@@ -20,14 +20,10 @@ body header {
 
 body header h1 {
   padding: 10px;
-  -ms-flex-preferred-size: 80%;
-      flex-basis: 80%;
   text-align: center;
 }
 
 body header p {
-  -ms-flex-preferred-size: 20%;
-      flex-basis: 20%;
   line-height: 40px;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
@@ -263,18 +259,18 @@ button {
 
 @media screen and (max-width: 480px) {
   header {
-    -webkit-box-pack: space-evenly;
-        -ms-flex-pack: space-evenly;
-            justify-content: space-evenly;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
   }
   header h1 {
     font-size: 24px;
     font-weight: 600;
   }
   header p {
-    -ms-flex-item-align: center;
-        -ms-grid-row-align: center;
-        align-self: center;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
   }
   .container .textArea {
     width: 80%;
