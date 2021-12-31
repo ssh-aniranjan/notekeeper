@@ -24,9 +24,9 @@ body {
     }
 
     footer {
-        position: relative;
-        top: 0;
+        position: fixed;
         left: 0;
+        bottom: 0;
 
         padding: 10px;
         // margin: 10px;
@@ -145,6 +145,7 @@ body {
 
         .notesContainer {
             padding: 2%;
+            padding-bottom: 200px;
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;

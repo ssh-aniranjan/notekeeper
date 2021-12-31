@@ -11,68 +11,149 @@ const addNoteBtn = document.querySelectorAll('.textAreaBtn >button')[1];
 
 const clearAllBtn = document.querySelectorAll('.notesHeader > button')[0];
 //clearallbtn
+// var notesArray = localStorage.getItem('notesKeeperString');
+
+//clear noteBox
+clearBtn.addEventListener('click', function () {
+    if (noteBox.value) {
+        noteBox.value = "";
+    }
+});
+
+//clear All Notes
+clearAllBtn.addEventListener('click', function () {
+    if (notesContainer) {
+        notesContainer.innerHTML = `<h2>No Notes added...</h2>`;
+        localStorage.setItem('notesKeeperString', '');
+    }
+});
 
 addNoteBtn.addEventListener('click', () => {
-    let div = document.createElement('div');
-    div.setAttribute(className, 'notes');
-    let h3 = document.createElement('h3');
-    h3.innerText = "Note";
-    div.appendChild(h3);
-    let p = document.createElement('p');
-    p.innerText = 'Helllpp ksgbakjdfbhd';
-    div.appendChild(p);
-    let button = document.createElement('button');
-    button.innerText = 'Delete Note';
-    div.appendChild(p);
-    notesContainer.appendChild(div);
-    var dataString = localStorage.getItem('noteKeeperString');
-    if (dataString) {
-        console.log(JSON.parse(dataString));
+    if (noteBox.value) {
+        if (localStorage.getItem('notesKeeperString')) {
+            // Window.alert("Something is here");
+            var allNotes = localStorage.getItem('notesKeeperString');
+            notesArray= [];
+            notesArray = JSON.parse(allNotes);
+            notesArray.push(`${noteBox.value}`);
+            if (notesArray.length) {
+                notesContainer.innerHTML = "";
+                notesArray.forEach(element => {
+                    let divElement = document.createElement('div');
+                    divElement.innerHTML = `<h3>Note</h3>
+                                                <p>${element}</p>
+                                                <button>Delete Note</button>`
+                    divElement.className = "notes";
+                    notesContainer.appendChild(divElement);
+                    // window.alert("Inner Loop ran");
+
+                });
+            }
+            allNotes = JSON.stringify(notesArray);
+            localStorage.setItem('notesKeeperString', allNotes);
+
+        }
+
+        else {
+            // window.alert("Nothing is here");
+            notesArray = [];
+            notesArray.push(`${noteBox.value}`);
+            if (notesArray.length) {
+                notesContainer.innerHTML = "";
+                notesArray.forEach(element => {
+                    let divElement = document.createElement('div');
+                    divElement.innerHTML = `<h3>Note</h3>
+                                                <p>${element}</p>
+                                                <button>Delete Note</button>`
+                    divElement.className = "notes";
+                    notesContainer.appendChild(divElement);
+                    window.alert("Inner Loop ran");
+
+                });
+            }
+            allNotes = JSON.stringify(notesArray);
+            localStorage.setItem('notesKeeperString', allNotes);
+        }
+        console.log(notesArray);
+
+
+        // let divElement = document.createElement('div');
+        // divElement.innerHTML = `<h3>Note</h3>
+        // <p>${noteBox.value}</p>
+        // <button>Delete Note</button>`
+        // divElement.className = "notes";
+        // notesContainer.appendChild(divElement);
+
+        // if(localStorage.getItem('notesKeeperString')){
+        //     allNotes = localStorage.getItem('notesKeeperString');
+        //     console.log(allNotes);
+
+        // }
+        // var notesArray = new Array;
+        // notesArray = JSON.parse(allNotes);
+        // notesArray.push(`${noteBox.value}`);
+        // allNotes = JSON.stringify(notesArray);
+        // localStorage.setItem('notesKeeperString',allNotes);
     }
     else {
-        console.log(dataString);
+        window.alert("Nothing to add");
     }
-    window.alert("Added note");
+});
+
+//fetching notes from local storage
+window.addEventListener('load', function () {
+    if (localStorage.getItem('notesKeeperString')) {
+        var allNotes = localStorage.getItem('notesKeeperString');
+        notesArray = JSON.parse(allNotes);
+        if (notesArray.length) {
+            notesArray.forEach(element => {
+                let divElement = document.createElement('div');
+                divElement.innerHTML = `<h3>Note</h3>
+                                        <p>${element}</p>
+                                        <button>Delete Note</button>`
+                divElement.className = "notes";
+                notesContainer.appendChild(divElement);
+
+            });
+        }
+    }
+    else {
+        notesContainer.innerHTML = `<h2>No Notes added...</h2>`;
+    }
 })
 
-clearAllBtn.addEventListener('click', () => {
-    let deleteAllResponse = window.confirm("Do you want to delete All Notes");
-    if (deleteAllResponse) {
-        console.log("Deleted all the notes");
-    }
-})
-
+//location adding code
 window.addEventListener('load', () => {
 
     if (window.navigator.geolocation) {
         window.navigator.geolocation.getCurrentPosition((res) => {
-            showPosition(res.coords.longitude,res.coords.latitude);
+            showPosition(res.coords.longitude, res.coords.latitude);
         }, positionError);
         // Geolocation available
     }
-    else{
+    else {
         window.alert("Geolocation for browser doesn't suppport");
     }
 });
-locationBox.addEventListener('click',()=>{
+locationBox.addEventListener('click', () => {
     if (window.navigator.geolocation) {
         window.navigator.geolocation.getCurrentPosition((res) => {
-            showPosition(res.coords.longitude,res.coords.latitude);
+            showPosition(res.coords.longitude, res.coords.latitude);
         }, positionError);
     }
-    else{
+    else {
         window.alert("Geolocation for browser doesn't suppport");
     }
 });
 
-function showPosition(long,lat) {
+function showPosition(long, lat) {
     fetch(`https://api.opencagedata.com/geocode/v1/json?q=${lat}+${long}&key=36e300b1a8814eaa85e8fd24d413fb30`)
         .then(response => response.json())
         .then(data => {
-            console.log(data.results);
+            // console.log(data.results);
             locationCity.innerText = `${data.results[0].components.city}, ${data.results[0].components['ISO_3166-1_alpha-2']}`;
         })
-        .catch(err => console.log(err+"No dtata retrieved"));
+        .catch(err => console.log(err + "No dtata retrieved"));
 };
 
 function positionError() {
