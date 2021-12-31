@@ -13,14 +13,12 @@ body {
         color: #fff;
         background: #000;
         h1 {
-
             padding: 10px;
             flex-basis: 80%;
             // margin: 10px;
             text-align: center;
-            
         }
-        p{
+        p {
             flex-basis: 20%;
             line-height: 40px;
             align-self: center;
@@ -203,8 +201,10 @@ button {
 //media queries
 
 @media screen and (max-width: 768) {
-    h1 {
-        font-size: 48px;
+    header {
+        h1 {
+            font-size: 48px;
+        }
     }
 
     .container {
@@ -224,16 +224,24 @@ button {
 }
 
 @media screen and (max-width: 480px) {
-    header{
-        h1{
+    header {
+        justify-content: space-evenly;
+        h1 {
             font-size: 24px;
             font-weight: 600;
         }
+        p {
+            // display: flex;
+            // flex-direction: column;
+            // justify-content: center;
+            align-self: center;
+        }
     }
+
     .container {
         .textArea {
             width: 80%;
-            #notebox{
+            #notebox {
                 height: 20vh;
                 width: 100%;
                 align-self: center;
@@ -257,12 +265,12 @@ button {
         }
     }
 
-    header{
-        h3{
+    footer {
+        h3 {
             font-size: 16px;
             font-weight: 100;
         }
-        p{
+        p {
             font-size: 16px;
         }
     }
