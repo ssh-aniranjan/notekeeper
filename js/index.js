@@ -48,20 +48,28 @@ window.addEventListener('load', () => {
         }, positionError);
         // Geolocation available
     }
+    else{
+        window.alert("Geolocation for browser doesn't suppport");
+    }
 });
+locationBox.addEventListener('click',()=>{
+    if (window.navigator.geolocation) {
+        window.navigator.geolocation.getCurrentPosition((res) => {
+            showPosition(res.coords.longitude,res.coords.latitude);
+        }, positionError);
+    }
+    else{
+        window.alert("Geolocation for browser doesn't suppport");
+    }
+})
+
 function showPosition(long,lat) {
-    // const { latitude, longitude } = location.coords;
     fetch(`https://api.opencagedata.com/geocode/v1/json?q=${lat}+${long}&key=36e300b1a8814eaa85e8fd24d413fb30`)
         .then(response => response.json())
         .then(data => {
             locationBox.innerText = `${data.results[0].components.city},${data.results[0].components.state}`;
-            
-            // console.log(data.results[0].components);
-            // console.log("Hello");
         })
-        .catch(err => console.log("No dtata retrieved"));
-
-    // https://api.opencagedata.com/geocode?/v1/json?q=LAT+LNG&key=36e300b1a8814eaa85e8fd24d413fb30
+        .catch(err => console.log(err+"No dtata retrieved"));
 };
 
 function positionError() {
