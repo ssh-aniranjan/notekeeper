@@ -67,7 +67,7 @@ addNoteBtn.addEventListener('click', () => {
                                                 <button>Delete Note</button>`
                     divElement.className = "notes";
                     notesContainer.appendChild(divElement);
-                    window.alert("Inner Loop ran");
+                    // window.alert("Inner Loop ran");
 
                 });
             }
@@ -75,6 +75,7 @@ addNoteBtn.addEventListener('click', () => {
             localStorage.setItem('notesKeeperString', allNotes);
         }
         console.log(notesArray);
+        noteBox.value = "";
 
 
         // let divElement = document.createElement('div');
