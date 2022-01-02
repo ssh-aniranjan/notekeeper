@@ -144,9 +144,12 @@ window.addEventListener('click', function (event) {
 //fetching notes from local storage
 window.addEventListener('load', function () {
     if (localStorage.getItem('notesKeeperString')) {
+        // window.alert("Loop runned");
         var allNotes = localStorage.getItem('notesKeeperString');
         if (typeof (allNotes) === 'string') {
+            notesArray =[];
             notesArray = JSON.parse(allNotes);
+            notesContainer.innerHTML = `<h2>Loop runned till here...</h2>`;
             if (notesArray.length) {
                 notesArray.forEach((element, index) => {
                     let divElement = document.createElement('div');
@@ -154,16 +157,22 @@ window.addEventListener('load', function () {
                                             <p>${element}</p>
                                             <button class="deleteBtn" id=${index}>Delete Note</button>`
                     divElement.className = "notes";
+
                     notesContainer.appendChild(divElement);
                     // window.alert("Inner Loop ran");
 
                 });
             }
+            else {
+                notesContainer.innerHTML = `<h2>No Notes added...</h2>`;
+            }
+
         }
     }
     else {
         notesContainer.innerHTML = `<h2>No Notes added...</h2>`;
     }
+    
 });
 
 //location adding code
