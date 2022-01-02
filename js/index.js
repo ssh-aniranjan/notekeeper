@@ -11,6 +11,8 @@ const addNoteBtn = document.querySelectorAll('.textAreaBtn >button')[1];
 
 const clearAllBtn = document.querySelectorAll('.notesHeader > button')[0];
 //clearallbtn
+const deleteBtns = document.getElementsByClassName('deleteBtn');
+console.log(deleteBtns);
 // var notesArray = localStorage.getItem('notesKeeperString');
 
 //clear noteBox
@@ -33,16 +35,16 @@ addNoteBtn.addEventListener('click', () => {
         if (localStorage.getItem('notesKeeperString')) {
             // Window.alert("Something is here");
             var allNotes = localStorage.getItem('notesKeeperString');
-            notesArray= [];
+            notesArray = [];
             notesArray = JSON.parse(allNotes);
             notesArray.push(`${noteBox.value}`);
             if (notesArray.length) {
                 notesContainer.innerHTML = "";
-                notesArray.forEach((element,index) => {
+                notesArray.forEach((element, index) => {
                     let divElement = document.createElement('div');
-                    divElement.innerHTML = `<h3>Note ${index+1}</h3>
+                    divElement.innerHTML = `<h3>Note ${index + 1}</h3>
                                                 <p>${element}</p>
-                                                <button>Delete Note</button>`
+                                                <button class="deleteBtn" id=${index}>Delete Note</button>`
                     divElement.className = "notes";
                     notesContainer.appendChild(divElement);
                     // window.alert("Inner Loop ran");
@@ -60,11 +62,11 @@ addNoteBtn.addEventListener('click', () => {
             notesArray.push(`${noteBox.value}`);
             if (notesArray.length) {
                 notesContainer.innerHTML = "";
-                notesArray.forEach((element,index) => {
+                notesArray.forEach((element, index) => {
                     let divElement = document.createElement('div');
-                    divElement.innerHTML = `<h3>Note ${index+1}</h3>
+                    divElement.innerHTML = `<h3>Note ${index + 1}</h3>
                                                 <p>${element}</p>
-                                                <button>Delete Note</button>`
+                                                <button class="deleteBtn" id=${index}>Delete Note</button>`
                     divElement.className = "notes";
                     notesContainer.appendChild(divElement);
                     // window.alert("Inner Loop ran");
@@ -101,22 +103,62 @@ addNoteBtn.addEventListener('click', () => {
     }
 });
 
+// //delete button for indivisual note
+window.addEventListener('click', function (event) {
+    if (typeof (event.target.id) === "number" || event.target.className === "deleteBtn") {
+        // window.alert("Delete Btn clicked");
+        if (localStorage.getItem('notesKeeperString') !== "") {
+
+            allNotes = localStorage.getItem('notesKeeperString');
+            notesArray = [];
+            notesArray = JSON.parse(allNotes);
+            notesArray.splice(event.target.id, 1);
+            window.alert("deleting note " + event.target.id+1);
+            notesContainer.innerHTML = ``;
+            if (notesArray.length) {
+                notesArray.forEach((element, index) => {
+                    let divElement = document.createElement('div');
+                    divElement.innerHTML = `<h3>Note ${index + 1}</h3>
+                                            <p>${element}</p>
+                                            <button class="deleteBtn" id=${index}>Delete Note</button>`
+                    divElement.className = "notes";
+                    notesContainer.appendChild(divElement);
+                    // window.alert("Inner Loop ran");
+
+                });
+            }
+            allNotes = JSON.stringify(notesArray);
+            localStorage.setItem('notesKeeperString', allNotes);
+            if (localStorage.getItem('notesKeeperString') === "") {
+                notesContainer.innerHTML = `<h2>No Notes added...</h2>`;
+
+            }
+
+        }
+
+    }
+
+    //     console.log(event.target.id);
+});
+
 //fetching notes from local storage
 window.addEventListener('load', function () {
     if (localStorage.getItem('notesKeeperString')) {
         var allNotes = localStorage.getItem('notesKeeperString');
-        notesArray = JSON.parse(allNotes);
-        if (notesArray.length) {
-            notesArray.forEach((element,index) => {
-                let divElement = document.createElement('div');
-                divElement.innerHTML = `<h3>Note ${index+1}</h3>
+        if (typeof (allNotes) === 'string') {
+            notesArray = JSON.parse(allNotes);
+            if (notesArray.length) {
+                notesArray.forEach((element, index) => {
+                    let divElement = document.createElement('div');
+                    divElement.innerHTML = `<h3>Note ${index + 1}</h3>
                                             <p>${element}</p>
-                                            <button>Delete Note</button>`
-                divElement.className = "notes";
-                notesContainer.appendChild(divElement);
-                // window.alert("Inner Loop ran");
+                                            <button class="deleteBtn" id=${index}>Delete Note</button>`
+                    divElement.className = "notes";
+                    notesContainer.appendChild(divElement);
+                    // window.alert("Inner Loop ran");
 
-            });
+                });
+            }
         }
     }
     else {
