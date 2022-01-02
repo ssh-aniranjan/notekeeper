@@ -38,9 +38,9 @@ addNoteBtn.addEventListener('click', () => {
             notesArray.push(`${noteBox.value}`);
             if (notesArray.length) {
                 notesContainer.innerHTML = "";
-                notesArray.forEach(element => {
+                notesArray.forEach((element,index) => {
                     let divElement = document.createElement('div');
-                    divElement.innerHTML = `<h3>Note</h3>
+                    divElement.innerHTML = `<h3>Note ${index+1}</h3>
                                                 <p>${element}</p>
                                                 <button>Delete Note</button>`
                     divElement.className = "notes";
@@ -60,9 +60,9 @@ addNoteBtn.addEventListener('click', () => {
             notesArray.push(`${noteBox.value}`);
             if (notesArray.length) {
                 notesContainer.innerHTML = "";
-                notesArray.forEach(element => {
+                notesArray.forEach((element,index) => {
                     let divElement = document.createElement('div');
-                    divElement.innerHTML = `<h3>Note</h3>
+                    divElement.innerHTML = `<h3>Note ${index+1}</h3>
                                                 <p>${element}</p>
                                                 <button>Delete Note</button>`
                     divElement.className = "notes";
@@ -107,13 +107,14 @@ window.addEventListener('load', function () {
         var allNotes = localStorage.getItem('notesKeeperString');
         notesArray = JSON.parse(allNotes);
         if (notesArray.length) {
-            notesArray.forEach(element => {
+            notesArray.forEach((element,index) => {
                 let divElement = document.createElement('div');
-                divElement.innerHTML = `<h3>Note</h3>
-                                        <p>${element}</p>
-                                        <button>Delete Note</button>`
+                divElement.innerHTML = `<h3>Note ${index+1}</h3>
+                                            <p>${element}</p>
+                                            <button>Delete Note</button>`
                 divElement.className = "notes";
                 notesContainer.appendChild(divElement);
+                // window.alert("Inner Loop ran");
 
             });
         }
