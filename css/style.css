@@ -200,6 +200,7 @@ body hr {
 }
 
 .container .allNotes .notesContainer .notes {
+  position: relative;
   margin: 5px;
   padding: 5px 5px;
   width: 30%;
@@ -225,12 +226,19 @@ body hr {
 }
 
 .container .allNotes .notesContainer .notes button {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
   margin-top: 10px;
   float: right;
   min-width: 20%;
   max-width: -webkit-fit-content;
   max-width: -moz-fit-content;
   max-width: fit-content;
+}
+
+.container .allNotes .notesContainer .notes button::before, .container .allNotes .notesContainer .notes button::after {
+  clear: both;
 }
 
 button {
