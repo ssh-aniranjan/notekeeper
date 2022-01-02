@@ -1,2 +1,2 @@
 # notekeeper
-testing
+Simple notes app based on browser...
