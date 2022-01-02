@@ -113,7 +113,7 @@ window.addEventListener('click', function (event) {
             notesArray = [];
             notesArray = JSON.parse(allNotes);
             notesArray.splice(event.target.id, 1);
-            window.alert("deleting note " + event.target.id+1);
+            // window.alert("deleting note " + parseInt(event.target.id)+1);
             notesContainer.innerHTML = ``;
             if (notesArray.length) {
                 notesArray.forEach((element, index) => {
@@ -126,6 +126,9 @@ window.addEventListener('click', function (event) {
                     // window.alert("Inner Loop ran");
 
                 });
+            }
+            else {
+                notesContainer.innerHTML = `<h2>No Notes added...</h2>`;
             }
             allNotes = JSON.stringify(notesArray);
             localStorage.setItem('notesKeeperString', allNotes);
