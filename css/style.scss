@@ -9,9 +9,13 @@ body {
     margin: 0;
 
     header {
+        position: sticky;
+        top: 0;
+        left: 0;
         display: flex;
         color: #fff;
         background: #000;
+        z-index: 111;
         h1 {
             padding: 10px;
             // margin: 10px;
@@ -24,7 +28,7 @@ body {
     }
 
     footer {
-        position: fixed;
+        position: relative;
         left: 0;
         bottom: 0;
 
@@ -157,7 +161,6 @@ body {
                 padding: 5px 5px;
 
                 width: 30%;
-
                 background: #fff8;
                 border: 1px solid #333;
                 border-radius: 6px;
@@ -172,6 +175,8 @@ body {
                 p {
                     margin: 0px 4px;
                     margin-bottom: 16px;
+                    padding: 1px;
+                    overflow-wrap: break-word;
                 }
                 button {
                     margin-top: 10px;
@@ -215,7 +220,7 @@ button {
             .notesContainer {
                 flex-direction: column;
                 .notes {
-                    flex-basis: 40%;
+                    flex-basis: 80%;
                 }
             }
         }
@@ -229,10 +234,9 @@ button {
             font-size: 24px;
             font-weight: 600;
         }
-        p{
+        p {
             width: fit-content;
         }
-        
     }
 
     .container {

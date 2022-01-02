@@ -74,7 +74,7 @@ addNoteBtn.addEventListener('click', () => {
             allNotes = JSON.stringify(notesArray);
             localStorage.setItem('notesKeeperString', allNotes);
         }
-        console.log(notesArray);
+        // console.log(notesArray);
         noteBox.value = "";
 
 
@@ -122,7 +122,7 @@ window.addEventListener('load', function () {
     else {
         notesContainer.innerHTML = `<h2>No Notes added...</h2>`;
     }
-})
+});
 
 //location adding code
 window.addEventListener('load', () => {
@@ -137,6 +137,7 @@ window.addEventListener('load', () => {
         window.alert("Geolocation for browser doesn't suppport");
     }
 });
+
 locationBox.addEventListener('click', () => {
     if (window.navigator.geolocation) {
         window.navigator.geolocation.getCurrentPosition((res) => {
