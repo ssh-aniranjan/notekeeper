@@ -152,7 +152,7 @@ window.addEventListener('load', function () {
         if (typeof (allNotes) === 'string') {
             notesArray =[];
             notesArray = JSON.parse(allNotes);
-            notesContainer.innerHTML = `<h2>Loop runned till here...</h2>`;
+            // notesContainer.innerHTML = `<h2>Loop runned till here...</h2>`;
             if (notesArray.length) {
                 notesArray.forEach((element, index) => {
                     let divElement = document.createElement('div');
