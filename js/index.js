@@ -13,6 +13,32 @@ const clearAllBtn = document.querySelectorAll('.notesHeader > button')[0];
 const deleteBtns = document.getElementsByClassName('deleteBtn');
 console.log(deleteBtns);
 
+//functions
+function noNotesAdded() {
+    notesContainer.innerHTML = `<h2>No Notes added...</h2>`;
+}
+
+function writeNotes(arrayValue) {
+    notesContainer.innerHTML = ``;
+    arrayValue.forEach((element, index) => {
+        let divElement = document.createElement('div');
+        divElement.innerHTML = `<h3>Note ${index + 1}</h3>
+                                <p>${element}</p>
+                                <button class="deleteBtn" id=${index}>Delete Note</button>`
+        divElement.className = "notes";
+        notesContainer.appendChild(divElement);
+    });
+}
+
+function getNotes() {
+    return localStorage.getItem('notesKeeperString');
+}
+
+function setNotes(notesArray) {
+    allNotes = JSON.stringify(notesArray);
+    localStorage.setItem('notesKeeperString', allNotes);
+}
+
 //clear noteBox
 clearBtn.addEventListener('click', function () {
     if (noteBox.value) {
@@ -23,33 +49,22 @@ clearBtn.addEventListener('click', function () {
 //clear All Notes
 clearAllBtn.addEventListener('click', function () {
     if (notesContainer) {
-        notesContainer.innerHTML = `<h2>No Notes added...</h2>`;
+        noNotesAdded();
         localStorage.setItem('notesKeeperString', '');
     }
 });
 
 addNoteBtn.addEventListener('click', () => {
     if (noteBox.value) {
-        if (localStorage.getItem('notesKeeperString')) {
-            var allNotes = localStorage.getItem('notesKeeperString');
+        if (getNotes()) {
+            var allNotes = getNotes();
             notesArray = [];
             notesArray = JSON.parse(allNotes);
             notesArray.push(`${noteBox.value}`);
             if (notesArray.length) {
-                notesContainer.innerHTML = "";
-                notesArray.forEach((element, index) => {
-                    let divElement = document.createElement('div');
-                    divElement.innerHTML = `<h3>Note ${index + 1}</h3>
-                                                <p>${element}</p>
-                                                <button class="deleteBtn" id=${index}>Delete Note</button>`
-                    divElement.className = "notes";
-                    notesContainer.appendChild(divElement);
-
-                });
+                writeNotes(notesArray);
             }
-            allNotes = JSON.stringify(notesArray);
-            localStorage.setItem('notesKeeperString', allNotes);
-
+            setNotes(notesArray);
         }
 
         else {
@@ -57,19 +72,9 @@ addNoteBtn.addEventListener('click', () => {
             notesArray.push(`${noteBox.value}`);
             if (notesArray.length) {
                 notesContainer.innerHTML = "";
-                notesArray.forEach((element, index) => {
-                    let divElement = document.createElement('div');
-                    divElement.innerHTML = `<h3>Note ${index + 1}</h3>
-                                                <p>${element}</p>
-                                                <button class="deleteBtn" id=${index}>Delete Note</button>`
-                    divElement.className = "notes";
-                    notesContainer.appendChild(divElement);
-                    // window.alert("Inner Loop ran");
-
-                });
+                writeNotes(notesArray);
             }
-            allNotes = JSON.stringify(notesArray);
-            localStorage.setItem('notesKeeperString', allNotes);
+            setNotes(notesArray);
         }
         noteBox.value = "";
     }
@@ -81,32 +86,21 @@ addNoteBtn.addEventListener('click', () => {
 // //delete button for indivisual note
 window.addEventListener('click', function (event) {
     if (typeof (event.target.id) === "number" || event.target.className === "deleteBtn") {
-        if (localStorage.getItem('notesKeeperString') !== "") {
+        if (getNotes() !== "") {
 
-            allNotes = localStorage.getItem('notesKeeperString');
+            allNotes = getNotes();
             notesArray = [];
             notesArray = JSON.parse(allNotes);
             notesArray.splice(event.target.id, 1);
-            notesContainer.innerHTML = ``;
             if (notesArray.length) {
-                notesArray.forEach((element, index) => {
-                    let divElement = document.createElement('div');
-                    divElement.innerHTML = `<h3>Note ${index + 1}</h3>
-                                            <p>${element}</p>
-                                            <button class="deleteBtn" id=${index}>Delete Note</button>`
-                    divElement.className = "notes";
-                    notesContainer.appendChild(divElement);
-
-                });
+                writeNotes(notesArray);
             }
             else {
-                notesContainer.innerHTML = `<h2>No Notes added...</h2>`;
+                noNotesAdded();
             }
-            allNotes = JSON.stringify(notesArray);
-            localStorage.setItem('notesKeeperString', allNotes);
-            if (localStorage.getItem('notesKeeperString') === "") {
-                notesContainer.innerHTML = `<h2>No Notes added...</h2>`;
-
+            setNotes(notesArray);
+            if (getNotes() === "") {
+                noNotesAdded();
             }
 
         }
@@ -117,32 +111,22 @@ window.addEventListener('click', function (event) {
 
 //fetching notes from local storage
 window.addEventListener('load', function () {
-    if (localStorage.getItem('notesKeeperString')) {
-        var allNotes = localStorage.getItem('notesKeeperString');
+    if (getNotes()) {
+        var allNotes = getNotes();
         if (typeof (allNotes) === 'string') {
             notesArray = [];
             notesArray = JSON.parse(allNotes);
             if (notesArray.length) {
-                notesArray.forEach((element, index) => {
-                    let divElement = document.createElement('div');
-                    divElement.innerHTML = `<h3>Note ${index + 1}</h3>
-                                            <p>${element}</p>
-                                            <button class="deleteBtn" id=${index}>Delete Note</button>`
-                    divElement.className = "notes";
-
-                    notesContainer.appendChild(divElement);
-                    // window.alert("Inner Loop ran");
-
-                });
+                writeNotes(notesArray);
             }
             else {
-                notesContainer.innerHTML = `<h2>No Notes added...</h2>`;
+                noNotesAdded();
             }
 
         }
     }
     else {
-        notesContainer.innerHTML = `<h2>No Notes added...</h2>`;
+        noNotesAdded();
     }
 
 });
@@ -154,7 +138,6 @@ window.addEventListener('load', () => {
         window.navigator.geolocation.getCurrentPosition((res) => {
             showPosition(res.coords.longitude, res.coords.latitude);
         }, positionError);
-        // Geolocation available
     }
     else {
         window.alert("Geolocation for browser doesn't suppport");
