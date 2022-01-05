@@ -22,9 +22,10 @@ function writeNotes(arrayValue) {
     notesContainer.innerHTML = ``;
     arrayValue.forEach((element, index) => {
         let divElement = document.createElement('div');
-        divElement.innerHTML = `<h3>Note ${index + 1}</h3>
+        divElement.innerHTML = `<div><h3>Note ${index + 1}</h3>
+                               <button class="deleteBtn" id=${index}></button></div>
                                 <p>${element}</p>
-                                <button class="deleteBtn" id=${index}>Delete Note</button>`
+                                `
         divElement.className = "notes";
         notesContainer.appendChild(divElement);
     });

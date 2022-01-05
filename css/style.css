@@ -211,11 +211,56 @@ body hr {
           box-shadow: 0 0 3px;
 }
 
-.container .allNotes .notesContainer .notes h3 {
-  padding: 5px;
-  font-size: 24px;
+.container .allNotes .notesContainer .notes div {
+  margin-bottom: 20px;
+  -webkit-box-shadow: 0px 1px 1px #444;
+          box-shadow: 0px 1px 1px #444;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .allNotes .notesContainer .notes div h3 {
+  padding: 2px;
+  font-size: 20px;
   text-align: left;
   direction: ltr;
+}
+
+.container .allNotes .notesContainer .notes div button {
+  float: right;
+  width: 48px;
+  height: 32px;
+  max-width: -webkit-fit-content;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  background: url(./../images/delete.svg);
+  background-position: center;
+}
+
+.container .allNotes .notesContainer .notes div button:hover {
+  background: rgba(34, 106, 240, 0.1);
+}
+
+.container .allNotes .notesContainer .notes div button:active {
+  background: rgba(72, 128, 231, 0.5);
+}
+
+.container .allNotes .notesContainer .notes hr {
+  width: 100%;
 }
 
 .container .allNotes .notesContainer .notes p {
@@ -223,19 +268,6 @@ body hr {
   margin-bottom: 16px;
   padding: 1px;
   overflow-wrap: break-word;
-}
-
-.container .allNotes .notesContainer .notes button {
-  margin-top: 10px;
-  float: right;
-  min-width: 20%;
-  max-width: -webkit-fit-content;
-  max-width: -moz-fit-content;
-  max-width: fit-content;
-}
-
-.container .allNotes .notesContainer .notes button::before, .container .allNotes .notesContainer .notes button::after {
-  margin: 10px;
 }
 
 button {
