@@ -1,2 +1,14 @@
-# notekeeper
-Simple notes app based on browser...
+# Notekeeper
+
+The notekeeper is a simple browser based todo list api.
+
+## Usage
+
+Visit the link below and you are good to go...
+
+- [NotekeeperApi](https://aniranjan2001.github.io/notekeeper/)
+
+## Authors
+
+- Abhishek Niranjan [@aniranjan2001](https://www.github.com/aniranjan2001)
+
